@@ -1,4 +1,3 @@
-
 <?php
 // deklarasi variabel dengan nilai biodata 
 $nama = "Risky Pranata";
