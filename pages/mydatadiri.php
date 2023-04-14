@@ -1,5 +1,5 @@
 <?php
-// deklarasi variabel dengan nilai biodata 
+// deklarasi variabel dengan nilai datadiri/biodata
 $nama = "Risky Pranata";
 $umur = 20;
 $tempat_lahir = "Belitang";
@@ -10,7 +10,12 @@ $hobi = array("main game, tidur, ngoding");
 $jurusan = "Teknik Informatika";
 $universitas = "Indo Global Mandiri";
 $email = "Pranatarizky858@gmail.com";
+$foto = "../image/riskypranata.jpg";
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -43,15 +48,15 @@ $email = "Pranatarizky858@gmail.com";
 
     <div class="container">
         <div class="starter-template">
-            <img src="image/iky.jpg" alt="Foto Profil" class="img-circle" height="450px">
+            <img src="<?php echo $foto; ?>" alt="Foto Profil Risky Pranata" width="300px">
             <h1><?php echo $nama; ?></h1>
-            <p class="lead"><?php echo $universitas; ?> </p>
+            <p class=" lead"><?php echo $universitas; ?> </p>
             <ul class="list-unstyled">
                 <li><strong>Jurusan:</strong><?php echo $jurusan; ?></li>
                 <li><strong>Email:</strong> <?php echo $email; ?></li>
                 <li><strong>Alamat:</strong><?php echo $alamat;?></li>
                 <li><strong>Umur:</strong> <?php echo $umur; ?></li>
-                <li><strong>Umur:</strong> <?php echo $jenis_kelamin; ?></li>
+                <li><strong>Jenis Kelamin:</strong> <?php echo $jenis_kelamin; ?></li>
                 <li><strong>Tempat tanggal lahir:</strong><?php echo $tempat_lahir . ', ' . $tanggal_lahir;?></li>
                 <li><strong>Hobi:</strong> <?php echo implode(", ", $hobi); ?></li>
 
