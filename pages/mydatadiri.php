@@ -11,14 +11,11 @@ $jurusan = "Teknik Informatika";
 $universitas = "Indo Global Mandiri";
 $email = "Pranatarizky858@gmail.com";
 $foto = "../image/riskypranata.jpg";
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
+<!--Ini adalah HTML Nya-->
 
 <head>
     <title>Biodata Diri</title>
