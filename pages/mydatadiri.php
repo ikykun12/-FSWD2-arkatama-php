@@ -1,5 +1,6 @@
+
 <?php
-// deklarasi variabel dengan nilai biodata
+// deklarasi variabel dengan nilai biodata 
 $nama = "Risky Pranata";
 $umur = 20;
 $tempat_lahir = "Belitang";
