@@ -4,6 +4,7 @@ $nama = "Risky Pranata";
 $umur = 20;
 $tempat_lahir = "Belitang";
 $tanggal_lahir = "20 April 2001";
+$jenis_kelamin = "Pria";
 $alamat = "Jalan Ki Merogan Kertapati";
 $hobi = array("main game, tidur, ngoding");
 $jurusan = "Teknik Informatika";
@@ -50,6 +51,7 @@ $email = "Pranatarizky858@gmail.com";
                 <li><strong>Email:</strong> <?php echo $email; ?></li>
                 <li><strong>Alamat:</strong><?php echo $alamat;?></li>
                 <li><strong>Umur:</strong> <?php echo $umur; ?></li>
+                <li><strong>Umur:</strong> <?php echo $jenis_kelamin; ?></li>
                 <li><strong>Tempat tanggal lahir:</strong><?php echo $tempat_lahir . ', ' . $tanggal_lahir;?></li>
                 <li><strong>Hobi:</strong> <?php echo implode(", ", $hobi); ?></li>
 
