@@ -1,4 +1,5 @@
 <?php
+// Set jumlah baris yang diinginkan
 	$rows=5;
 	//Loop pertama digunakan untuk mengatur baris
 	for($j=1; $j<=$rows; $j++){
