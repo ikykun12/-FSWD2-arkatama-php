@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+ 
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+}
 // Koneksi ke database
 include_once("koneksi.php");
 
@@ -16,6 +22,8 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $role = $_POST['role'];
     $phone = $_POST['phone'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     // Proses upload file
     $nama_file = $_FILES['avatar']['name'];
@@ -37,7 +45,7 @@ if (isset($_POST['submit'])) {
     // Proses upload file ke server
     if (move_uploaded_file($tmp_file, $nama_file_baru)) {
         // Masukkan data ke dalam tabel users
-        $sql = "INSERT INTO users (nama, email, role, phone, avatar) VALUES ('$nama', '$email', '$role', '$phone', '$nama_file_baru')";
+        $sql = "INSERT INTO users (nama, email, role, phone, username, password, avatar) VALUES ('$nama', '$email', '$role', '$phone','$username','$password', '$nama_file_baru')";
 
         if (mysqli_query($conn, $sql)) {
            
@@ -89,10 +97,20 @@ if (isset($_POST['submit'])) {
                 <label for="avatar">Avatar:</label>
                 <input type="file" class="form-control" id="avatar" name="avatar">
             </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="New Password">New Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
             <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
         </form>
         <br>
         <a href="index.php" class="btn btn-secondary">Kembali ke Daftar Pengguna</a>
+        <a href="logout.php" class="btn btn-secondary">Logout</a>
+
     </div>
 </body>
 

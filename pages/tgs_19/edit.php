@@ -1,7 +1,13 @@
 <?php
+session_start();
+ 
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+}
 // buat koneksi ke database
 include_once("koneksi.php");
 $conn = mysqli_connect($hostname,$username,$password,$database);
+
 
 // cek apakah ada permintaan edit data pengguna
 if(isset($_GET["id"])) {
@@ -18,6 +24,8 @@ if(isset($_GET["id"])) {
         $role = $row["role"];
         $phone = $row["phone"];
         $avatar = $row["avatar"];
+        $username = $row["username"];
+        
     } else {
         echo '<div class="alert alert-danger" role="alert">Data pengguna tidak ditemukan.</div>';
         exit;
@@ -33,6 +41,8 @@ if(isset($_POST["submit"])) {
     $email = $_POST["email"];
     $role = $_POST["role"];
     $phone = $_POST["phone"];
+    $username = $_POST["username"];
+    $password =$_POST["password"];
     // Proses upload file
     $nama_file = $_FILES['avatar']['name'];
     $ukuran_file = $_FILES['avatar']['size'];
@@ -53,7 +63,7 @@ if(isset($_POST["submit"])) {
    // Proses upload file ke server
    if (move_uploaded_file($tmp_file, $nama_file_baru)) {
        // Masukkan data ke dalam tabel users
-       $sql = "INSERT INTO users (nama, email, role, phone, avatar) VALUES ('$nama', '$email', '$role', '$phone', '$nama_file_baru')";
+       $sql = "INSERT INTO users (nama, email, role, phone, username, password,avatar) VALUES ('$nama', '$email', '$role', '$phone','$username','$password','$nama_file_baru')";
 
        if (mysqli_query($conn, $sql)) {
            echo "Data berhasil disimpan";
@@ -104,8 +114,17 @@ mysqli_close($conn);
                 <label for="avatar">Avatar:</label>
                 <input type="file" class="form-control" id="avatar" name="avatar" value="<?php echo $avatar; ?>">
             </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" value="<?php echo $username; ?>"
+                    required>
+            </div>
+
+
             <button type="submit" name="submit" class="btn btn-primary">Simpan Perubahan</button>
         </form>
         <br>
         <a href="index.php" class="btn btn-secondary">Kembali ke Daftar Pengguna</a>
+        <a href="logout.php" class="btn btn-secondary">Logout</a>
+
     </div>

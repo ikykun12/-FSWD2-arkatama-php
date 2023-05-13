@@ -4,6 +4,12 @@ include_once("koneksi.php");
 
 $conn = mysqli_connect($hostname,$username,$password,$database);
 
+session_start();
+ 
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+}
+ 
 // Cek apakah koneksi berhasil
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
@@ -32,12 +38,14 @@ mysqli_close($conn);
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>Username</th>
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Role</th>
                     <th>Phone</th>
                     <th>Avatar</th>
                     <th>Aksi</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -46,12 +54,15 @@ mysqli_close($conn);
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
+                        echo "<td>" . $row['username']."</td>";
                         echo "<td>" . $row['nama'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
                         echo "<td>" . $row['role'] . "</td>";
                         echo "<td>" . $row['phone'] . "</td>";
-                        echo  "<td><img src='" . $row['avatar'] . "' height='100' width='100'></td>";
+                        echo "<td><img src='" . $row['avatar'] . "' height='100' width='100'></td>";
                         echo "<td><a href='edit.php?id=" . $row['id'] . "' class='btn btn-primary'>Edit</a> <a href='delete.php?id=" . $row['id'] . "' class='btn btn-danger'>Hapus</a></td>";
+                       
+                      
                         echo "</tr>";
                     }
                 } else {
@@ -61,6 +72,7 @@ mysqli_close($conn);
             </tbody>
         </table>
         <a href="add.php" class="btn btn-success">Tambah Pengguna</a>
+        <a href="logout.php" class="btn btn-secondary">Logout</a>
     </div>
 </body>
 

@@ -45,6 +45,8 @@
 		echo '<th>Phone</th>';
 		echo '<th>Avatar</th>';
 		echo '<th>Aksi</th>';
+		echo '<th>Username</th>';
+		echo '<th>Password</th>';
 		echo '</tr>';
 		echo '</thead>';
 		echo '<tbody>';
@@ -58,6 +60,8 @@
 			echo '<td>' . $row["phone"] . '</td>';
 			echo '<td><img src="' . $row["avatar"] . '" width="50"></td>';
 			echo '<td><a href="index.php?delete=' . $row["id"] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakin ingin menghapus pengguna ini?\')">Hapus</a></td>';
+			echo "<td>" . $row['username']."</td>";
+			echo "<td>" . $row['password']. "</td>";
 			echo '</tr>';
 		}
 
