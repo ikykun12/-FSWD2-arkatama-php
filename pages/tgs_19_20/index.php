@@ -7,7 +7,7 @@ $conn = mysqli_connect($hostname,$username,$password,$database);
 session_start();
  
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: login.php"); // redirect ke halaman login jika pengguna belum login
 }
  
 // Cek apakah koneksi berhasil
